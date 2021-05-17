@@ -1,0 +1,1 @@
+This is part of TOR Project. Initially is supposed to have the backend for a rock paper scissor game.
