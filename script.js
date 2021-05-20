@@ -8,30 +8,30 @@ let scissor = document.querySelector('#scissor');
 let userScoreDisplay = document.querySelector("#userScore");
 let computerScoreDisplay = document.querySelector("#computerScore");
 let resultDisplay = document.querySelector("#result");
+let finalResultDisplay = document.querySelector("#finalResult");
 
 let imgs = document.querySelectorAll("img");
 
-imgs.forEach((e) => {
-    e.addEventListener("click", () => {
-        let userChoice;
-       if(e.getAttribute("id") == "rock"){
-           userChoice = "rock";
-        }
-        if(e.getAttribute("id") == "paper"){
-            userChoice = "paper";
-         }
-         if(e.getAttribute("id") == "scissor"){
-            userChoice = "scissor";
-         }
+let game = imgs.forEach((e) => {
+                e.addEventListener("click", () => {
+                    let userChoice;
+                if(e.getAttribute("id") == "rock"){
+                    userChoice = "rock";
+                    }
+                    if(e.getAttribute("id") == "paper"){
+                        userChoice = "paper";
+                    }
+                    if(e.getAttribute("id") == "scissor"){
+                        userChoice = "scissor";
+                    }
+                    if(userScore == 5 || computerScore == 5) {
+                        console.log("end game");
+                    } else {
+                        playRound(userChoice, computerPlay());
+                    }     
 
-        if(userScore == 5 || computerScore == 5){
-            console.log("end");
-        } else{
-            playRound(userChoice, computerPlay());
-        }     
-
-    })// end event listener
-}) // end img foreach
+                })// end event listener
+            }) // end img foreach
 
 
 function computerPlay() {
@@ -50,11 +50,24 @@ function userPlay(choice) {
 function addPoint(player){
     if(player == "user"){
         userScore++
-        userScoreDisplay.innerText = userScore;         
+        if(userScore == 5){
+            userScoreDisplay.innerText = userScore;  
+            finalResultDisplay.style.background = "rgba(51, 231, 45, 0.774)";
+            finalResultDisplay.innerText = "Congratulatins. YOU WON!!!";
+        } else {
+            userScoreDisplay.innerText = userScore;  
+        }        
     }
     if(player == "computer"){
         computerScore++
-        computerScoreDisplay.innerText = computerScore;
+        if(computerScore == 5){
+            computerScoreDisplay.innerText = computerScore;
+            finalResultDisplay.style.background = "rgba(231, 64, 64, 0.774)";
+            finalResultDisplay.innerText = "Oh No. Computer Wins :(";
+        } else {
+            computerScoreDisplay.innerText = computerScore;
+        }
+        
     }
 }
 

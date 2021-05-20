@@ -33,3 +33,7 @@ body {
     border-radius: 10%;
     
 }
+
+#finalResult{
+    font-size: 40px;
+}
