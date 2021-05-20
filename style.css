@@ -1,4 +1,35 @@
-body {
-    background-color: rgb(104, 203, 241);
+* {
+    box-sizing: border-box;
 }
+
+body {
+    background-color: rgba(104, 202, 241, 0.699);
+    overflow: hidden;
+}
+
+.container{
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.rock-paper-scissor{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    padding: 5%;
+}
+
+.rock-paper-scissor img{
+    max-width: 200px;
+    max-height: 150px;
+    padding: 10%;
+    border: 1px solid rgba(0, 0, 0, 0.089);
+    border-radius: 10%;
     
+}

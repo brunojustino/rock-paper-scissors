@@ -1,6 +1,37 @@
 let userScore = 0
 let computerScore = 0
 
+let rock = document.querySelector('#rock');
+let paper = document.querySelector('#paper');
+let scissor = document.querySelector('#scissor');
+
+let userScoreDisplay = document.querySelector("#userScore");
+let computerScoreDisplay = document.querySelector("#computerScore");
+
+let imgs = document.querySelectorAll("img");
+
+imgs.forEach((e) => {
+    e.addEventListener("click", () => {
+        let userChoice;
+       if(e.getAttribute("id") == "rock"){
+           userChoice = "rock";
+        }
+        if(e.getAttribute("id") == "paper"){
+            userChoice = "paper";
+         }
+         if(e.getAttribute("id") == "scissor"){
+            userChoice = "scissor;"
+         }
+        if(userScore == 5 || computerScore == 5){
+            console.log("end");
+        } else{
+            playRound(userChoice, computerPlay());
+        }     
+
+    })// end event listener
+}) // end img foreach
+
+
 function computerPlay() {
     let randomNumber = Math.floor(Math.random() * 3) + 1
     switch(randomNumber){
@@ -10,21 +41,31 @@ function computerPlay() {
     }
 }
 
-function userPlay() {
-    result = window.prompt("Choose rock, paper or scissor").trim().toLowerCase();
-    return result
+function userPlay(choice) {
+    return choice;
+}
+
+function addPoint(player){
+    if(player == "user"){
+        userScore++
+        userScoreDisplay.innerText = userScore; 
+    }
+    if(player == "computer"){
+        computerScore++
+        computerScoreDisplay.innerText = computerScore;
+    }
 }
 
 function playRound(playerSelection, computerSelection){
     switch(playerSelection){
         case "rock":
             if(computerSelection == "scissor"){
-                userScore++
+                addPoint('user');
                 console.log("Rock beats Scissor. Player Win")
                 break;
             } else if (computerSelection == "paper"){
+                addPoint('computer');
                 console.log("Paper beats Rock. Computer Win")
-                computerScore++
                 break;
             } else {
                 console.log("Draw")
@@ -33,11 +74,11 @@ function playRound(playerSelection, computerSelection){
         case "paper":
             if(computerSelection == "scissor"){
                 console.log("Scissor beat Paper. Computer Win")
-                computerScore++
+                addPoint('computer');
                 break;
             } else if(computerSelection == "rock"){
                 console.log("Paper beats Rock. Player Win")
-                userScore++
+                addPoint('user');
                 break;
             } else {
                 console.log("Draw")
@@ -46,11 +87,11 @@ function playRound(playerSelection, computerSelection){
         case "scissor":
             if(computerSelection == "rock"){
                 console.log("Rock beats Scissor. Computer Win")
-                computerScore++
+                addPoint('computer');
                 break;
             } else if(computerSelection == "paper"){
                 console.log("Scissor beat Paper. Player Win")
-                userScore++
+                addPoint('user');
                 break;
             } else {
                 console.log("Draw")
