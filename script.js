@@ -7,6 +7,7 @@ let scissor = document.querySelector('#scissor');
 
 let userScoreDisplay = document.querySelector("#userScore");
 let computerScoreDisplay = document.querySelector("#computerScore");
+let resultDisplay = document.querySelector("#result");
 
 let imgs = document.querySelectorAll("img");
 
@@ -20,8 +21,9 @@ imgs.forEach((e) => {
             userChoice = "paper";
          }
          if(e.getAttribute("id") == "scissor"){
-            userChoice = "scissor;"
+            userChoice = "scissor";
          }
+
         if(userScore == 5 || computerScore == 5){
             console.log("end");
         } else{
@@ -48,7 +50,7 @@ function userPlay(choice) {
 function addPoint(player){
     if(player == "user"){
         userScore++
-        userScoreDisplay.innerText = userScore; 
+        userScoreDisplay.innerText = userScore;         
     }
     if(player == "computer"){
         computerScore++
@@ -61,56 +63,51 @@ function playRound(playerSelection, computerSelection){
         case "rock":
             if(computerSelection == "scissor"){
                 addPoint('user');
+                resultDisplay.innerText = "Rock beats Scissor. Player Win";
                 console.log("Rock beats Scissor. Player Win")
                 break;
             } else if (computerSelection == "paper"){
                 addPoint('computer');
+                resultDisplay.innerText = "Paper beats Rock. Computer Win";
                 console.log("Paper beats Rock. Computer Win")
                 break;
             } else {
                 console.log("Draw")
+                resultDisplay.innerText = "Draw";
                 break;
             }
         case "paper":
             if(computerSelection == "scissor"){
-                console.log("Scissor beat Paper. Computer Win")
+                console.log("Scissor beat Paper. Computer Win");
+                resultDisplay.innerText = "Scissor beat Paper. Computer Win";
                 addPoint('computer');
                 break;
             } else if(computerSelection == "rock"){
-                console.log("Paper beats Rock. Player Win")
+                console.log("Paper beats Rock. Player Win");
+                resultDisplay.innerText = "Paper beats Rock. Player Win";
                 addPoint('user');
                 break;
             } else {
                 console.log("Draw")
+                resultDisplay.innerText = "Draw";
                 break;
             }
         case "scissor":
             if(computerSelection == "rock"){
-                console.log("Rock beats Scissor. Computer Win")
+                console.log("Rock beats Scissor. Computer Win");
+                resultDisplay.innerText = "Rock beats Scissor. Computer Win";
                 addPoint('computer');
                 break;
             } else if(computerSelection == "paper"){
                 console.log("Scissor beat Paper. Player Win")
+                resultDisplay.innerText = "Scissor beat Paper. Player Win";
                 addPoint('user');
                 break;
             } else {
                 console.log("Draw")
+                resultDisplay.innerText = "Draw";
                 break;
             }
     } // end case
 
 } // end play round function
-
-function game(){
-    for(i = 0; i < 5; i++){
-    let userChoice = userPlay()
-    let computerChoice = computerPlay()
-    playRound(userChoice, computerChoice)
-    console.log("Score:")
-    console.log("Player: " + userScore)
-    console.log("Computer: " + computerScore)
-    console.log("=======================")
-    }
-}
-
-game()
