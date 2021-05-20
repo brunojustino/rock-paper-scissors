@@ -9,6 +9,7 @@ let userScoreDisplay = document.querySelector("#userScore");
 let computerScoreDisplay = document.querySelector("#computerScore");
 let resultDisplay = document.querySelector("#result");
 let finalResultDisplay = document.querySelector("#finalResult");
+let resetButton = document.querySelector("#resetButton");
 
 let imgs = document.querySelectorAll("img");
 
@@ -48,13 +49,13 @@ function userPlay(choice) {
 }
 
 function addPoint(player){
-
     if(player == "user"){
         userScore++
         if(userScore == 5){
             userScoreDisplay.innerText = userScore;  
             finalResultDisplay.style.background = "rgba(51, 231, 45, 0.774)";
             finalResultDisplay.innerText = "Congratulatins. YOU WON!!!";
+            resetButton.classList.remove('hidden');
         } else {
             userScoreDisplay.innerText = userScore;  
         }        
@@ -65,11 +66,22 @@ function addPoint(player){
             computerScoreDisplay.innerText = computerScore;
             finalResultDisplay.style.background = "rgba(231, 64, 64, 0.774)";
             finalResultDisplay.innerText = "Oh No. Computer Wins :(";
+            resetButton.classList.remove('hidden');
         } else {
             computerScoreDisplay.innerText = computerScore;
         }
         
     }
+}
+
+function reset(){
+    userScore = 0;
+    computerScore = 0;
+    computerScoreDisplay.innerText = computerScore;
+    userScoreDisplay.innerText = userScore;  
+    resultDisplay.innerText = "";
+    finalResultDisplay.innerText = "";
+    resetButton.classList.add('hidden');
 }
 
 function playRound(playerSelection, computerSelection){

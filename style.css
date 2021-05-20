@@ -33,10 +33,34 @@ body {
     border-radius: 10%;
     
 }
+.results{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+}
 
 #result{
     font-size: 24px;
-    background-color: rgba(49, 58, 59, 0.041);
+
+}
+
+.resetButton{
+    display: block;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: rgba(246, 249, 250, 0.966);
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5%;
+}
+
+.hidden{
+    display: none;
 }
 
 #finalResult{
