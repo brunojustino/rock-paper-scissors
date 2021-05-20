@@ -48,6 +48,7 @@ function userPlay(choice) {
 }
 
 function addPoint(player){
+
     if(player == "user"){
         userScore++
         if(userScore == 5){
@@ -75,7 +76,7 @@ function playRound(playerSelection, computerSelection){
     switch(playerSelection){
         case "rock":
             if(computerSelection == "scissor"){
-                addPoint('user');
+                addPoint('user');              
                 resultDisplay.innerText = "Rock beats Scissor. Player Win";
                 console.log("Rock beats Scissor. Player Win")
                 break;
